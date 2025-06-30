@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMax Cars - Quality Pre-Owned Vehicles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(to right, #0f172a, #334155);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to right, #ef4444, #ea580c);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #fca5a5, #fed7aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fca5a5;
+            transform: scale(1.1);
+        }
+
+        /* Menu Bar Styles */
+        .menubar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .menubar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .menu-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        .menu-link {
+            display: block;
+            padding: 1rem 0.5rem;
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            color: #dc2626;
+        }
+
+        .menu-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ef4444, #ea580c);
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 320px;
+            background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+            padding: 1.5rem;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        .sidebar-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-color: #fecaca;
+        }
+
+        .sidebar-item h3 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-item:hover h3 {
+            color: #dc2626;
+        }
+
+        .sidebar-item p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .main-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 768px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .content-box:hover {
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .content-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-image img {
+            width: 100%;
+            height: 192px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .content-box:hover .content-image img {
+            transform: scale(1.1);
+        }
+
+        .content-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .content-box:hover .content-image::after {
+            opacity: 1;
+        }
+
+        .content-body {
+            padding: 1.5rem;
+        }
+
+        .content-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .content-box:hover .content-title {
+            color: #dc2626;
+        }
+
+        .content-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .content-button {
+            background: linear-gradient(to right, #ef4444, #ea580c);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-button:hover {
+            background: linear-gradient(to right, #dc2626, #c2410c);
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(to right, #0f172a, #334155);
+            color: white;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #fca5a5;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #4b5563;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .menu-list {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <h1 class="logo-text">AutoMax Cars</h1>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Bar -->
+    <nav class="menubar">
+        <div class="menubar-container">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="#" class="menu-link active">Home</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Inventory</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Financing</a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Car Services</h2>
+            <div class="sidebar-item">
+                <h3>Special Offers</h3>
+                <p>Check out our latest deals and promotions on quality used cars.</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>Trade-In Value</h3>
+                <p>Get an instant estimate for your current vehicle's trade-in value.</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>Car History Reports</h3>
+                <p>View detailed vehicle history reports for complete transparency.</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>Warranty Plans</h3>
+                <p>Protect your investment with our comprehensive warranty options.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="main-header">
+                <h1 class="main-title">Find Your Perfect Car Today</h1>
+                <p class="main-subtitle">
+                    Browse our extensive inventory of quality pre-owned vehicles. Every car is thoroughly inspected and comes with our guarantee of excellence.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-box">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop" alt="Luxury Sedans">
+                    </div>
+                    <div class="content-body">
+                        <h3 class="content-title">Luxury Sedans</h3>
+                        <p class="content-description">
+                            Experience premium comfort and performance with our selection of luxury sedans. From BMW to Mercedes-Benz, find your perfect ride with advanced features and elegant design.
+                        </p>
+                        <button class="content-button">View Inventory</button>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=300&fit=crop" alt="SUVs & Trucks">
+                    </div>
+                    <div class="content-body">
+                        <h3 class="content-title">SUVs & Trucks</h3>
+                        <p class="content-description">
+                            Discover our wide range of SUVs and pickup trucks perfect for families and work. Built for durability and versatility, these vehicles offer the space and power you need.
+                        </p>
+                        <button class="content-button">View Inventory</button>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-image">
+                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&h=300&fit=crop" alt="Sports Cars">
+                    </div>
+                    <div class="content-body">
+                        <h3 class="content-title">Sports Cars</h3>
+                        <p class="content-description">
+                            Feel the thrill of the road with our collection of sports cars. From classic muscle cars to modern supercars, experience speed, style, and engineering excellence.
+                        </p>
+                        <button class="content-button">View Inventory</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About AutoMax Cars</h3>
+                    <p>
+                        With over 20 years of experience in the automotive industry, AutoMax Cars 
+                        is your trusted partner for quality pre-owned vehicles. We pride ourselves 
+                        on transparent pricing, thorough inspections, and exceptional customer service.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Vehicle Financing</a></li>
+                        <li><a href="#">Trade-In Services</a></li>
+                        <li><a href="#">Extended Warranties</a></li>
+                        <li><a href="#">Service & Maintenance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Visit Our Showroom</h3>
+                    <p>📧 sales@automaxcars.com</p>
+                    <p>📞 +1 (555) CAR-SALE</p>
+                    <p>📍 1234 Auto Drive, Car City, State 54321</p>
+                    <p>🕒 Mon-Sat: 9AM-7PM, Sun: 11AM-5PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AutoMax Cars. All rights reserved. | Your trusted car dealership since 2004</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Limited Divs</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f3e5f5, #e1f5fe);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #createBtn {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #009688;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #createBtn:hover:enabled {
+      background-color: #00796b;
+    }
+
+    #boxContainer {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .dynamic-box {
+      width: 500px;
+      height: 100px;
+      background-color : pink;
+     
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .dynamic-box:hover {
+      transform: scale(1.1);
+      background-color: black;
+    }
+
+    #statusMsg {
+      margin-top: 15px;
+      font-size: 14px;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create  div</h1>
+  <button id="createBtn" onclick="createBox()">Create New Div</button>
+  <p id="statusMsg"></p>
+
+  <div id="boxContainer"></div>
+
+  <script>
+    let boxCount = 0;
+    const maxBoxes = 10;
+
+    function createBox() {
+      if (boxCount < maxBoxes) {
+        const box = document.createElement("div");
+        box.classList.add("dynamic-box");
+        document.getElementById("boxContainer").appendChild(box);
+        boxCount++;
+
+        if (boxCount === maxBoxes) {
+          const btn = document.getElementById("createBtn");
+          btn.disabled = true;
+          btn.style.backgroundColor = "#ccc";
+          document.getElementById("statusMsg").textContent = "Maximum of 10 divs created!";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
